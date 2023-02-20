@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package com.assigment.core.service.statistics;
+
+option java_package = "com.assigment.core.service.statistics.proto";
+
+service StatisticsService {
+  rpc updateStatisticsForUser (UpdateStatisticsForUserRequest) returns (UpdateStatisticsForUserResponse) {};
+  rpc getStatisticsByUser (GetStatisticsByUserRequest) returns (GetStatisticsByUserResponse) {};
+}
+
+message UpdateStatisticsForUserRequest {
+  string username = 1;
+  string countryCode = 2;
+  string videoLink = 3;
+  string commentLink = 4;
+}
+
+message UpdateStatisticsForUserResponse {
+  bool updated = 1;
+}
+
+message GetStatisticsByUserRequest {
+  string username = 1;
+}
+
+message GetStatisticsByUserResponse {
+  string countryCode = 1;
+  string videoLink = 2;
+  string commentLink = 3;
+}

@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package com.assigment.core.service.auth;
+
+option java_package = "com.assigment.core.service.auth.proto";
+
+service AuthService {
+  rpc authenticate (AuthRequest) returns (AuthResponse) {}
+}
+
+message AuthRequest {
+  string user_name = 1;
+  string password = 2;
+}
+
+message RegisterRequest {
+  string user_name = 1;
+  string password = 2;
+  string countryCode = 3;
+}
+
+message AuthResponse {
+  bool authenticated = 1;
+}
+
+message RegisterResponse {
+  bool registered = 1;
+}
+

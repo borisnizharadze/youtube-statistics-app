@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  rabbitmq:
+    host: ${RABBITMQ_HOST}
+    port: ${RABBITMQ_PORT}
+    relayPort: ${RABBITMQ_RELAY_PORT}
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
+
+  redis:
+    host: ${REDIS_HOST}
+    port: ${REDIS_PORT}
+
+grpc:
+  client:
+    core-service:
+      address: ${GRPC_CORE_SERVICE_HOST}:${GRPC_CORE_SERVICE_PORT}
+      negotiationType: ${GRPC_CORE_SERVICE_NEGOTIATION_TYPE}
+
+jks:
+  keyStorePath: jwtkeystore.jks
+  keyStorePassword: changeit
+  keyAlias: changeit
+  privateKeyPassphrase: changeit
+  issuer: changeit

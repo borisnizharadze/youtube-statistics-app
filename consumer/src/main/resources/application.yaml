@@ -1,0 +1,15 @@
+spring:
+  rabbitmq:
+    host: ${RABBITMQ_HOST}
+    port: ${RABBITMQ_PORT}
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
+
+grpc:
+  client:
+    core-service:
+      address: ${GRPC_CORE_SERVICE_HOST}:${GRPC_CORE_SERVICE_PORT}
+      negotiationType: ${GRPC_CORE_SERVICE_NEGOTIATION_TYPE}
+
+youtube:
+  key: ${YOUTUBE_KEY}
