@@ -1,0 +1,38 @@
+{
+  "name": "web-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@hookform/resolvers": "^2.9.7",
+    "@mui/icons-material": "^5.10.2",
+    "@mui/material": "^5.10.0",
+    "axios": "^0.27.2",
+    "http-proxy-middleware": "2.0.6",
+    "next": "12.2.5",
+    "react": "18.2.0",
+    "react-cookie": "^4.1.1",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.34.2",
+    "react-toastify": "^9.0.8",
+    "sockjs-client": "1.5.1",
+    "@stomp/stompjs": "7.0.0",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@types/node": "18.7.5",
+    "@types/react": "18.0.17",
+    "@types/react-dom": "18.0.6",
+    "@types/sockjs-client": "1.5.1",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "typescript": "4.7.4"
+  }
+}
