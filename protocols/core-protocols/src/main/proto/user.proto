@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package com.assigment.core.service.user;
+
+option java_package = "com.assigment.core.service.user.proto";
+
+service UserService {
+  rpc createUser (CreateUserRequest) returns (UserResponse);
+  rpc getUsersForStatisticsUpdate (Empty) returns (Users);
+  rpc updateUserProps(UpdateUserPropsRequest) returns (UserResponse);
+}
+
+message Empty {
+
+}
+
+message CreateUserRequest {
+  string username = 1;
+  string password = 2;
+  string countryCode = 3;
+  int32 intervalMins = 4;
+}
+
+message UpdateUserPropsRequest {
+  string username = 1;
+  string countryCode = 2;
+  int32 intervalMins = 3;
+}
+
+message Users {
+  repeated UserResponse users = 1;
+}
+
+message UserResponse {
+  string username = 1;
+  string countryCode = 2;
+  int32 intervalMins = 3;
+}

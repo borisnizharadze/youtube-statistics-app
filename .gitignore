@@ -1,0 +1,11 @@
+/protocols/core-protocols/.idea/
+/protocols/core-protocols/target/
+/core/.idea/
+/core/target/
+/api/.idea/
+/api/target/
+/producer/.idea/
+/producer/target/
+/consumer/.idea/
+/consumer/target/
+/web-app/node_modules/
