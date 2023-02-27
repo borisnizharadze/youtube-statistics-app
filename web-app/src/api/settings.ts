@@ -10,7 +10,7 @@ interface SettingsResponse {
 export const SettingsApi = {
     updateSettings: async (params: SettingsValues): Promise<SettingsResponse> => {
         try {
-            const settingsResponse = await backendAPI.put('/apiç/user', params)
+            const settingsResponse = await backendAPI.put('/api/user', params)
             return {
                 success: true,
                 data: settingsResponse.data,

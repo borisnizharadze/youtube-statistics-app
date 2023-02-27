@@ -7,7 +7,8 @@ import { settingsSchema } from "./schema"
 
 const SettingsForm = (props: SettingsFormProps) => {
     const {register, handleSubmit, formState: {errors}} = useForm<SettingsValues>({
-        resolver: yupResolver(settingsSchema)
+        resolver: yupResolver(settingsSchema),
+        defaultValues: props?.values
     })
 
     return (

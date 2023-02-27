@@ -13,6 +13,6 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class User {
     private String username;
-    private BigDecimal interval;
+    private BigDecimal intervalMins;
     private String countryCode;
 }

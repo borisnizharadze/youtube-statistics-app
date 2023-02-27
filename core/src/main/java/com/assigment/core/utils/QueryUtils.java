@@ -1,6 +1,5 @@
 package com.assigment.core.utils;
 
-import com.querydsl.core.types.Ops;
 import com.querydsl.core.types.dsl.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -26,7 +25,7 @@ public class QueryUtils {
     }
 
     public static BooleanExpression datePlusIntervalLess(DateTimePath<Date> timeField, NumberPath<Integer> intervalField, Date time) {
-        return time == null ? True() : Expressions.dateOperation(Date.class, Ops.DateTimeOps.ADD_MINUTES, intervalField, timeField).after(time);
+        return time == null ? True() : Expressions.dateTimeTemplate(Date.class, "DATEADD('MINUTE', {0}, {1})", intervalField, timeField).loe(time);
     }
 
     public static BooleanExpression True() {

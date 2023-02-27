@@ -1,14 +1,12 @@
 import {createContext, ReactNode, useCallback, useContext, useEffect, useMemo, useRef} from "react"
 import {useCookies} from "react-cookie"
 import {AuthApi} from "../api/auth"
-import {useRouter} from "next/router"
+import {useRouter, NextRouter} from "next/router"
 import {toast} from "react-toastify"
 import {LoginValues, SignUpValues} from "../user/props"
 import {AuthorizedContextType, AuthorizedState} from "./props"
 import {AxiosError} from "axios"
 import {backendAPI} from "../api/base"
-import {NextRouter} from "next/dist/client/router"
-import { User } from "../model/user"
 
 
 export const AuthorizedContext = createContext<null | AuthorizedContextType>(null)

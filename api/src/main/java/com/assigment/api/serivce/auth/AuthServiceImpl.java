@@ -69,8 +69,9 @@ public class AuthServiceImpl implements AuthService {
                 .setPassword(request.getPassword())
                 .build();
 
+        Auth.AuthResponse grpcResponse;
         try {
-            Auth.AuthResponse grpcResponse = grpcAuthService.authenticate(grpcRequest);
+            grpcResponse = grpcAuthService.authenticate(grpcRequest);
             if (!grpcResponse.getAuthenticated()) {
                 throw new ApplicationException(ApplicationExceptionTypes.INVALID_CREDENTIALS);
             }
@@ -78,11 +79,14 @@ public class AuthServiceImpl implements AuthService {
             if (exception.getStatus() == Status.INVALID_ARGUMENT) {
                 throw new ApplicationException(ApplicationExceptionTypes.USER_NOT_FOUND);
             }
+            throw new ApplicationException(ApplicationExceptionTypes.INTERNAL);
         }
 
-
-
-        User user = new User(request.getUsername(), new BigDecimal(1), "us");
+        User user = User.builder()
+                .username(grpcResponse.getUsername())
+                .countryCode(grpcResponse.getCountryCode())
+                .intervalMins(new BigDecimal(grpcResponse.getIntervalMins()))
+                .build();
 
         return LoginResponse.builder()
                 .jwt(createAccessToken(user))

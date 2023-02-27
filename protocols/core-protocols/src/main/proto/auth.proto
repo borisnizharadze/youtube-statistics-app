@@ -21,6 +21,9 @@ message RegisterRequest {
 
 message AuthResponse {
   bool authenticated = 1;
+  string username = 2;
+  string countryCode = 3;
+  int32 intervalMins = 4;
 }
 
 message RegisterResponse {

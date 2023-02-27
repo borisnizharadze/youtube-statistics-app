@@ -34,7 +34,6 @@ const Dashboard = () => {
         
             stompClient.onConnect = (response, ) => {
                 stompClient.subscribe('/user/topic/statistics-update', (message) => {
-                    console.log(message.body)
                     setStatistics(JSON.parse(message.body) as Statistics)
                 })
                 stompClient.publish({destination: "/app/connect"})

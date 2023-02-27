@@ -7,11 +7,9 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
 import java.util.List;
 
 import static com.assigment.core.repository.user.UserPredicate.byOverdueUpdate;
-import static com.assigment.core.repository.user.UserPredicate.byUserName;
 import static com.assigment.core.utils.QueryUtils.where;
 
 @Repository
@@ -23,9 +21,9 @@ public class UserRepositoryCustomImpl implements UserRepositoryCustom {
     private final QUserEntity qUserEntity = QUserEntity.userEntity;
 
     @Override
-    public List<UserEntity> getUsersForStatisticsUpdate(Date date) {
-        Predicate where = where(byOverdueUpdate(date));
+    public List<UserEntity> getUsersForStatisticsUpdate() {
+        Predicate where = where(byOverdueUpdate());
 
-        return queryFactory.select(qUserEntity).from(qUserEntity).fetch();
+        return queryFactory.select(qUserEntity).from(qUserEntity).where(where).fetch();
     }
 }

@@ -14,8 +14,8 @@ public class UserPredicate {
         return stringEq(qUserEntity.username, userName);
     }
 
-    public static BooleanExpression byOverdueUpdate(Date date) {
-        return datePlusIntervalLess(qUserEntity.lastStatisticsUpdate, qUserEntity.intervalMins, date);
+    public static BooleanExpression byOverdueUpdate() {
+        return datePlusIntervalLess(qUserEntity.lastStatisticsUpdate, qUserEntity.intervalMins, new Date());
     }
 
 }

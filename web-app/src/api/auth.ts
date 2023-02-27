@@ -1,9 +1,15 @@
+import { User } from "../model/user";
 import {LoginValues, SignUpValues} from "../user/props"
 import {backendAPI} from "./base"
 
+interface DataInterface {
+    jwt: string,
+    user: User
+}
+
 interface AuthResponse {
     success: boolean,
-    data?: Record<string, string>,
+    data?: DataInterface,
     message: string;
 }
 

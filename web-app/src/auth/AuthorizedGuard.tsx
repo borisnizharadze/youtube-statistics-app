@@ -1,9 +1,8 @@
-import {useRouter} from "next/router"
+import {useRouter, NextRouter} from "next/router"
 import {ReactNode, useEffect, useRef, useState} from "react"
 import {useAuthContext} from "./AuthorizedContext"
 import {AuthorizedState} from "./props"
 import FullScreenLoading from "../components/FullScreenLoading"
-import {NextRouter} from "next/dist/client/router"
 
 const AuthorizedGuard = ({children}: { children: ReactNode }) => {
     const [childComponent, setChildComponent] = useState<ReactNode>(<FullScreenLoading />)

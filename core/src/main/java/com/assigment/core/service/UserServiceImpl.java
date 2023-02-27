@@ -21,7 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 @Transactional
@@ -84,7 +83,6 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
     @Override
     public void updateUserProps(User.UpdateUserPropsRequest request, StreamObserver<User.UserResponse> responseObserver) {
         try {
-            log.info(request.getUsername());
             UserEntity user = Optional.ofNullable(userRepository.findByUsername(request.getUsername()))
                     .orElseThrow(IllegalArgumentException::new);
 
@@ -110,14 +108,15 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
 
     @Override
     public void getUsersForStatisticsUpdate(User.Empty request, StreamObserver<User.Users> responseObserver) {
-        List<User.UserResponse> userResponseList = userRepository.getUsersForStatisticsUpdate(new Date())
+        List<User.UserResponse> userResponseList = userRepository.getUsersForStatisticsUpdate()
                 .stream()
                 .map(userEntity -> User.UserResponse
-                                        .newBuilder()
-                                        .setCountryCode(userEntity.getCountryCode())
-                                        .setIntervalMins(userEntity.getIntervalMins())
-                                        .setUsername(userEntity.getUsername())
-                                        .build())
+                        .newBuilder()
+                        .setCountryCode(userEntity.getCountryCode())
+                        .setIntervalMins(userEntity.getIntervalMins())
+                        .setUsername(userEntity.getUsername())
+                        .build())
+
                 .collect(Collectors.toList());
 
         User.Users reply = User.Users
